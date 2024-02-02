@@ -1,3 +1,5 @@
+
+
 def get_todos(filepath="files/todos.txt"):
     """ reads a text file and return the list of to-do items.
     """
@@ -14,3 +16,4 @@ def write_todos(todos_arg, filepath="files/todos.txt"):
 
 if __name__ == "__main__":
     print("hello from functions")
+    print(get_todos())
