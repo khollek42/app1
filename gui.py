@@ -59,9 +59,9 @@ while True:
                 todos[index] = new_todo
                 functions.write_todos(todos)
                 window['todos'].update(values=todos)
-                window['todo'].update(value='')
+
             except IndexError:
-                sg.popup("Please select a item first", font=15)
+                sg.popup("Please select an item first", font=15)
 
         case "complete":
             try:
@@ -72,14 +72,18 @@ while True:
                 window['todos'].update(values=todos)
                 window['todo'].update(value='')
             except IndexError:
-                sg.popup("Please select a item first", font=15)
+                sg.popup("Please select an item first", font=15)
+            except ValueError:
+                continue
 
         case "exit":
             break
 
         case "todos":
-            window['todo'].update(value=values['todos'][0])
-
+            try:
+                window['todo'].update(value=values['todos'][0])
+            except IndexError:
+                sg.popup("Todos Completed")
         case sg.WIN_CLOSED:
             break
 
