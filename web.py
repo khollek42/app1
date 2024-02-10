@@ -10,16 +10,22 @@ def add_todo():
 
 
 
-st.title("Todo app")
+st.title("To-do's")
 
-st.subheader(" this is my header")
-st.write("this is a new app")
+st.subheader("For the love of my life!")
+st.write("Do IT!!!")
 
-for todo in todos:
-    st.checkbox(todo)
+for index, todo in enumerate(todos):
+    checkbox = st.checkbox(todo, key=todo)
+    if checkbox:
+        todos.pop(index)
+        funct.write_todos(todos, filepath='files\\todos.txt')
+        del st.session_state[todo]
+        st.rerun()
 
 
 st.text_input(label="Add new Todo:", placeholder="Add new Todo",
               on_change=add_todo,
               key="new_todo")
 
+#st.session_state
